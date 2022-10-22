@@ -3,22 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:11:35 by jeykim            #+#    #+#             */
-/*   Updated: 2022/10/13 17:12:40 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/10/22 16:24:58 by jeyoung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STACK_H
 # define STACK_H
-# define STACK_SIZE 100
+
+# include <unistd.h>
 
 typedef struct node
 {
-	int		data;
-	t_node	*prev;
-	t_node	*next;
+	int			data;
+	struct node	*prev;
+	struct node	*next;
 }	t_node;
 
 typedef struct stack
@@ -30,9 +31,26 @@ typedef struct stack
 
 typedef struct info
 {
-	t_stack	a;
-	t_stack	b;
+	t_stack	*a;
+	t_stack	*b;
 }	t_info;
 
-
+int		pop(t_stack *stack);
+void	add(t_stack *stack, int elem);
+void	init_stack(t_stack *stack);
+int		is_empty(t_stack *stack);
+void	print_stack(t_info *info);
+void	addfirst(t_stack *stack, int elem);
+int		popfirst(t_stack *stack);
+void	sa(t_info *info);
+void	sb(t_info *info);
+void	ss(t_info *info);
+void	pa(t_info *info);
+void	pb(t_info *info);
+void	ra(t_info *info);
+void	rb(t_info *info);
+void	rr(t_info *info);
+void	rra(t_info *info);
+void	rrb(t_info *info);
+void	rrr(t_info *info);
 #endif
