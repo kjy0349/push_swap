@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:11:35 by jeykim            #+#    #+#             */
-/*   Updated: 2022/10/22 16:24:58 by jeyoung          ###   ########.fr       */
+/*   Updated: 2022/11/03 15:37:25 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef struct info
 {
 	t_stack	*a;
 	t_stack	*b;
+	int		*array;
 }	t_info;
 
 int		pop(t_stack *stack);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:54:38 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/02 14:25:45 by jeyoung          ###   ########.fr       */
+/*   Updated: 2022/11/03 17:57:05 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	pop(t_stack *stack)
 	int		elem;
 	t_node	*temp;
 
-	if (stack->top->prev != stack->bot)
+	if (stack->size > 0)
 	{
 		elem = stack->top->prev->data;
 		temp = stack->top->prev;
@@ -128,5 +128,6 @@ void	print_stack(t_info *info)
 		else
 			elemb = " ";
 		printf("%s %s\n", elema, elemb);
-	}	
+	}
+	printf("a size : %d b size : %d\n", info->a->size, info->b->size);
 }

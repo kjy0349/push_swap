@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:52:10 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/02 14:40:41 by jeyoung          ###   ########.fr       */
+/*   Updated: 2022/11/03 17:54:28 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,7 @@
 int	print_error(int type)
 {
 	if (type >= 1)
-	{
 		write(2, "Error\n", 7);
-	}
-	system("leaks a.out");
 	exit(1);
 	return (-1);
 }
@@ -165,6 +162,109 @@ void	arr_to_stack(t_info *info, int *array, int size)
 	}
 }
 
+void	free_stack(t_stack *stack)
+{
+	int		idx;
+	t_node	*n_idx;
+	t_node	*tmp;
+
+	idx = 0;
+	n_idx = stack->bot->next;
+	while (idx < stack->size)
+	{
+		tmp = n_idx;
+		free(tmp);
+		n_idx = n_idx->next;
+		idx++;
+	}
+	tmp = NULL;
+	free(stack->top);
+	free(stack->bot);
+	stack->top = NULL;
+	stack->bot = NULL;
+}
+
+void	sort_triple(t_info *info)
+{
+	int	top;
+	int	bot;
+	int	mid;
+
+	top = info->a->top->prev->data;
+	bot = info->a->bot->next->data;
+	mid = info->a->bot->next->next->data;
+	if (top < mid && mid > bot && top < bot)
+	{
+		sa(info);
+		ra(info);
+	}
+	else if (top > mid && mid < bot && top < bot)
+		sa(info);
+	else if (top < mid && mid > bot && top > bot)
+		rra(info);
+	else if (top > mid && bot > mid && top > bot)
+		ra(info);
+	else if (top > mid && mid > bot && top > bot)
+	{
+		sa(info);
+		rra(info);
+	}
+}
+
+void	divide_triple(t_info *info, int piv1, int piv2)
+{
+	if (info->a->top->prev->data < piv1)
+	{
+		pb(info);
+		rb(info);
+	}
+	else if (info->a->top->prev->data < piv2)
+		pb(info);
+	else
+		ra(info);
+}
+
+void	set_pivot_divide(t_info *info)
+{
+	int	idx;
+	int	piv1;
+	int	piv2;
+	int	*array;
+
+	array = info->array;
+	idx = info->a->size / 3;
+	piv1 = (info->array)[idx];
+	piv2 = (info->array)[idx * 2];
+	idx = info->a->size;
+	while (idx > 0)
+	{
+		divide_triple(info, piv1, piv2);
+		idx--;
+	}
+}
+
+void	sort_all(t_info *info)
+{
+	set_pivot_divide(info);
+	while (info->a->size > 3)
+		pb(info);
+}
+
+void	sort_elem(t_info *info)
+{
+	if (info->a->size == 2)
+	{
+		if (info->a->bot->next->data > info->a->top->prev->data)
+		{
+			sa(info);
+		}
+	}
+	else if (info->a->size == 3)
+		sort_triple(info);
+	else
+		sort_all(info);
+}
+
 int	main(int argc, char *argv[])
 {
 	t_stack	a;
@@ -182,7 +282,9 @@ int	main(int argc, char *argv[])
 	info.b = &b;
 	arr_size = get_input_size(argc, argv);
 	arr = make_array(argc, argv, arr_size);
+	info.array = arr;
 	arr_to_stack(&info, arr, arr_size);
-	print_stack(&info);
-	system("leaks a.out");
+	sort_elem(&info);
+	free(info.array);
+	system("leaks push_swap");
 }
