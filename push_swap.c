@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:52:10 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/03 17:54:28 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/03 19:43:59 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,6 +230,7 @@ void	set_pivot_divide(t_info *info)
 	int	piv1;
 	int	piv2;
 	int	*array;
+	int	temp;
 
 	array = info->array;
 	idx = info->a->size / 3;
@@ -243,11 +244,64 @@ void	set_pivot_divide(t_info *info)
 	}
 }
 
+int	get_min_stack(t_node *node)
+{
+	int	elem;
+
+	elem = node->data;
+	while (node)
+	{
+		
+	}
+}
+
+int	get_i_idx(int num, t_info *info)
+{
+	int	elem;
+
+	if (num < )
+}
+
+void	get_min_rtcnt(t_info *info, int *i, int *j)
+{
+	int		i_idx;
+	int		j_idx;
+	int		idx;
+	t_node	*b;
+	int		num;
+
+	idx = 0;
+	b = info->b->top->prev;
+	while (idx < info->b->size)
+	{
+		num = b->data;
+		i_idx = get_i_idx(num, info);
+		idx++;
+	}
+}
+
 void	sort_all(t_info *info)
 {
+	int	i;
+	int	j;
+
 	set_pivot_divide(info);
 	while (info->a->size > 3)
 		pb(info);
+	if (info->a->size == 2)
+	{
+		if (info->a->bot->next->data > info->a->top->prev->data)
+			sa(info);
+	}
+	else if (info->a->size == 3)
+		sort_triple(info);
+	while (info->b->size > 0)
+	{
+		i = 0;
+		j = 0;
+		get_min_rtcnt(info, &i, &j);
+		pa(info);
+	}
 }
 
 void	sort_elem(t_info *info)
@@ -255,9 +309,7 @@ void	sort_elem(t_info *info)
 	if (info->a->size == 2)
 	{
 		if (info->a->bot->next->data > info->a->top->prev->data)
-		{
 			sa(info);
-		}
 	}
 	else if (info->a->size == 3)
 		sort_triple(info);
@@ -286,5 +338,4 @@ int	main(int argc, char *argv[])
 	arr_to_stack(&info, arr, arr_size);
 	sort_elem(&info);
 	free(info.array);
-	system("leaks push_swap");
 }
