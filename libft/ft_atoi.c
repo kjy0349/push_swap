@@ -6,23 +6,33 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 00:16:12 by jeyoung           #+#    #+#             */
-/*   Updated: 2022/05/10 18:08:39 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/04/10 09:52:48 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdbool.h>
+
+static bool	is_spac(char c)
+{
+	if (c == '\n' || c == '\v' || c == '\t' || \
+	c == '\f' || c == '\r' || c == ' ')
+		return (true);
+	else
+		return (false);
+}
 
 int	ft_atoi(const char *str)
 {
-	int					i;
-	int					sign;
-	long				return_num;
+	int			i;
+	int			sign;
+	long long	return_num;
+	long long	tmp;
 
 	sign = 1;
 	return_num = 0;
 	i = 0;
-	while (str[i] == '\n' || str[i] == '\v' || str[i] == '\t' \
-	|| str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+	while (is_spac(str[i]))
 		i++;
 	if (str[i] == '+' || str[i] == '-')
 	{
@@ -32,7 +42,10 @@ int	ft_atoi(const char *str)
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		return_num = return_num * 10 + str[i] - '0';
+		tmp = return_num * 10 + (str[i] - '0');
+		if (tmp < return_num)
+			return (-1 + (sign < 0));
+		return_num = tmp;
 		i++;
 	}
 	return ((int)(return_num * sign));

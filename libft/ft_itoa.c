@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
+/*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/29 16:50:13 by jeykim            #+#    #+#             */
-/*   Updated: 2022/04/02 13:11:05 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/02 12:05:15 by jeyoung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,12 @@ static int	get_num_length(long n, int *sign)
 char	*ft_itoa(int n)
 {
 	char		*str;
-	static int	length;
+	int			length;
 	int			sign;
 	long		number;
 
 	number = n;
+	length = 0;
 	length = get_num_length(number, &sign);
 	str = (char *)malloc(sizeof(char) * (length + 1));
 	if (!str)

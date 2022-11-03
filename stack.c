@@ -6,12 +6,13 @@
 /*   By: jeyoung <jeyoung@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:54:38 by jeykim            #+#    #+#             */
-/*   Updated: 2022/10/22 16:44:43 by jeyoung          ###   ########.fr       */
+/*   Updated: 2022/11/02 14:25:45 by jeyoung          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 #include "push_swap.h"
+#include "./libft/libft.h"
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -105,8 +106,8 @@ void	print_stack(t_info *info)
 {
 	t_node	*idxa;
 	t_node	*idxb;
-	char	elema;
-	char	elemb;
+	char	*elema;
+	char	*elemb;
 
 	idxa = info->a->top->prev;
 	idxb = info->b->top->prev;
@@ -114,18 +115,18 @@ void	print_stack(t_info *info)
 	{
 		if (idxa != info->a->bot)
 		{
-			elema = idxa->data + '0';
+			elema = ft_itoa(idxa->data);
 			idxa = idxa->prev;
 		}
 		else
-			elema = ' ';
+			elema = " ";
 		if (idxb != info->b->bot)
 		{
-			elemb = idxb->data + '0';
+			elemb = ft_itoa(idxb->data);
 			idxb = idxb->prev;
 		}
 		else
-			elemb = ' ';
-		printf("%c %c\n", elema, elemb);
+			elemb = " ";
+		printf("%s %s\n", elema, elemb);
 	}	
 }
