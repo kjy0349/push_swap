@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:39:27 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/05 16:11:24 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 17:13:25 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,13 @@ void	sort_all(t_info *info)
 	set_pivot_divide(info);
 	while (info->a->size > 3)
 		pb(info);
-	sort_triple(info);
+	if (info->a->size == 2)
+	{
+		if (info->a->top->prev->data > info->a->bot->next->data)
+			sa(info);
+	}
+	else
+		sort_triple(info);
 	while (info->b->size > 0)
 	{
 		a = 0;
