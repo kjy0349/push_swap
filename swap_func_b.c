@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_func.c                                        :+:      :+:    :+:   */
+/*   swap_func_b.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/07 13:23:57 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/05 20:43:41 by jeykim           ###   ########.fr       */
+/*   Created: 2022/11/05 20:43:46 by jeykim            #+#    #+#             */
+/*   Updated: 2022/11/05 20:48:55 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap_bonus.h"
 
 void	sa(t_info *info)
 {
@@ -25,7 +25,6 @@ void	sa(t_info *info)
 	elem2 = pop(a);
 	add(a, elem1);
 	add(a, elem2);
-	write(1, "sa\n", 3);
 }
 
 void	sb(t_info *info)
@@ -41,7 +40,6 @@ void	sb(t_info *info)
 	elem2 = pop(b);
 	add(b, elem1);
 	add(b, elem2);
-	write(1, "sb\n", 3);
 }
 
 void	ss(t_info *info)
@@ -60,7 +58,6 @@ void	ss(t_info *info)
 	elem2 = pop(stack);
 	add(stack, elem1);
 	add(stack, elem2);
-	write(1, "ss\n", 3);
 }
 
 void	pa(t_info *info)
@@ -71,7 +68,6 @@ void	pa(t_info *info)
 		return ;
 	elem = pop(info->b);
 	add(info->a, elem);
-	write(1, "pa\n", 3);
 }
 
 void	pb(t_info *info)
@@ -82,5 +78,4 @@ void	pb(t_info *info)
 		return ;
 	elem = pop(info->a);
 	add(info->b, elem);
-	write(1, "pb\n", 3);
 }

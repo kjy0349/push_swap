@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap_rfunc.c                                       :+:      :+:    :+:   */
+/*   swap_rfunc_b.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/04 19:18:04 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/05 20:42:46 by jeykim           ###   ########.fr       */
+/*   Created: 2022/11/05 20:44:27 by jeykim            #+#    #+#             */
+/*   Updated: 2022/11/05 20:44:52 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "push_swap_bonus.h"
 
 void	ra(t_info *info)
 {
@@ -20,7 +20,6 @@ void	ra(t_info *info)
 		return ;
 	elem = pop(info->a);
 	addfirst(info->a, elem);
-	write(1, "ra\n", 3);
 }
 
 void	rb(t_info *info)
@@ -31,7 +30,6 @@ void	rb(t_info *info)
 		return ;
 	elem = pop(info->b);
 	addfirst(info->b, elem);
-	write(1, "rb\n", 3);
 }
 
 void	rr(t_info *info)
@@ -44,7 +42,6 @@ void	rr(t_info *info)
 	addfirst(info->a, elem);
 	elem = pop(info->b);
 	addfirst(info->b, elem);
-	write(1, "rr\n", 3);
 }
 
 void	rra(t_info *info)
@@ -55,7 +52,6 @@ void	rra(t_info *info)
 		return ;
 	elem = popfirst(info->a);
 	add(info->a, elem);
-	write(1, "rra\n", 4);
 }
 
 void	rrb(t_info *info)
@@ -66,5 +62,4 @@ void	rrb(t_info *info)
 		return ;
 	elem = popfirst(info->b);
 	add(info->b, elem);
-	write(1, "rrb\n", 4);
 }

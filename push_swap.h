@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:55:03 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/05 16:50:45 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 20:12:26 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,5 +52,6 @@ void	divide_triple(t_info *info, int piv1, int piv2);
 int		get_input_size(int argc, char *argv[]);
 int		print_error(int type);
 int		is_empty(t_stack *stack);
+void	check_dup(t_info *info, int arr_size);
 
 #endif
