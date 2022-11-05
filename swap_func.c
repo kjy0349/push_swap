@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 13:23:57 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 16:21:15 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:19:08 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,74 +83,4 @@ void	pb(t_info *info)
 	elem = pop(info->a);
 	add(info->b, elem);
 	write(1, "pb\n", 3);
-}
-
-void	ra(t_info *info)
-{
-	int	elem;
-
-	if (info->a->size < 2)
-		return ;
-	elem = pop(info->a);
-	addfirst(info->a, elem);
-	write(1, "ra\n", 3);
-}
-
-void	rb(t_info *info)
-{
-	int	elem;
-
-	if (info->b->size < 2)
-		return ;
-	elem = pop(info->b);
-	addfirst(info->b, elem);
-	write(1, "rb\n", 3);
-}
-
-void	rr(t_info *info)
-{
-	int	elem;
-
-	if (info->b->size < 2 || info->a->size < 2)
-		return ;
-	elem = pop(info->a);
-	addfirst(info->a, elem);
-	elem = pop(info->b);
-	addfirst(info->b, elem);
-	write(1, "rr\n", 3);
-}
-
-void	rra(t_info *info)
-{
-	int	elem;
-
-	if (info->a->size < 2)
-		return ;
-	elem = popfirst(info->a);
-	add(info->a, elem);
-	write(1, "rra\n", 4);
-}
-
-void	rrb(t_info *info)
-{
-	int	elem;
-
-	if (info->b->size < 2)
-		return ;
-	elem = popfirst(info->b);
-	add(info->b, elem);
-	write(1, "rrb\n", 4);
-}
-
-void	rrr(t_info *info)
-{
-	int	elem;
-
-	if (info->b->size < 2 || info->a->size < 2)
-		return ;
-	elem = popfirst(info->a);
-	add(info->a, elem);
-	elem = popfirst(info->b);
-	add(info->b, elem);
-	write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:52:10 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:08:10 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 20:07:32 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 int	print_error(int type)
 {
 	if (type >= 1)
-		write(2, "Error\n", 7);
+		write(2, "Error\n", 6);
 	exit(1);
 	return (-1);
 }
@@ -62,21 +62,30 @@ void	divide_triple(t_info *info, int piv1, int piv2)
 		ra(info);
 }
 
-void	set_pivot_divide(t_info *info)
+void	check_dup(t_info *info, int arr_size)
 {
-	int	idx;
-	int	piv1;
-	int	piv2;
+	int	*array;
+	int	i;
+	int	j;
 
-	idx = info->a->size / 3;
-	piv1 = info->array[idx];
-	idx = info->a->size * 2 / 3;
-	piv2 = info->array[idx];
-	idx = info->a->size;
-	while (idx)
+	array = info->array;
+	i = 0;
+	j = 0;
+	while (i < arr_size)
 	{
-		divide_triple(info, piv1, piv2);
-		idx--;
+		j = i + 1;
+		while (j < arr_size)
+		{
+			if (i == j)
+			{
+				free_stack(info->a);
+				free_stack(info->b);
+				free(info->array);
+				print_error(-1);
+			}
+			j++;
+		}
+		i++;
 	}
 }
 
@@ -99,6 +108,7 @@ int	main(int argc, char *argv[])
 	arr = make_array(argc, argv, arr_size);
 	info.array = arr;
 	arr_to_stack(&info, arr, arr_size);
+	check_dup(&info, arr_size);
 	check_sort(arr, arr_size, 0);
 	sort_elem(&info);
 	free(info.array);

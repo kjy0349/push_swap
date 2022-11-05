@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:55:03 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:03:11 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:44:08 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ void	set_pivot_divide(t_info *info);
 void	divide_triple(t_info *info, int piv1, int piv2);
 int		get_input_size(int argc, char *argv[]);
 int		print_error(int type);
+int		is_empty(t_stack *stack);
 
 #endif

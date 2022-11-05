@@ -6,11 +6,12 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:56:25 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 18:57:25 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:56:45 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include "stack.h"
 
 int	set_min(t_info *info)
 {
@@ -78,4 +79,35 @@ int	set_mid(int num, t_info *info)
 	if (elem >= (info->a->size + 1) / 2)
 		elem = (info->a->size - elem) * -1;
 	return (elem);
+}
+
+void	set_pivot_divide(t_info *info)
+{
+	int	idx;
+	int	piv1;
+	int	piv2;
+
+	idx = info->a->size / 3;
+	piv1 = info->array[idx];
+	idx = info->a->size * 2 / 3;
+	piv2 = info->array[idx];
+	idx = info->a->size;
+	while (idx)
+	{
+		divide_triple(info, piv1, piv2);
+		idx--;
+	}
+}
+
+void	rrr(t_info *info)
+{
+	int	elem;
+
+	if (info->b->size < 2 || info->a->size < 2)
+		return ;
+	elem = popfirst(info->a);
+	add(info->a, elem);
+	elem = popfirst(info->b);
+	add(info->b, elem);
+	write(1, "rrr\n", 4);
 }

@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:54:00 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:04:25 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:17:24 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,4 +60,9 @@ void	set_str_array(int *array, int *arr_idx, char **str)
 		(*arr_idx)++;
 		idx++;
 	}
+}
+
+int	is_empty(t_stack *stack)
+{
+	return (stack->size == 0);
 }

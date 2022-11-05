@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:54:38 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 16:17:36 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/04 19:17:36 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,39 +95,4 @@ void	init_stack(t_stack *stack)
 	stack->bot->next = stack->top;
 	stack->bot->prev = NULL;
 	stack->size = 0;
-}
-
-int	is_empty(t_stack *stack)
-{
-	return (stack->size == 0);
-}
-
-void	print_stack(t_info *info)
-{
-	t_node	*idxa;
-	t_node	*idxb;
-	char	*elema;
-	char	*elemb;
-
-	idxa = info->a->top->prev;
-	idxb = info->b->top->prev;
-	while (idxa != info->a->bot || idxb != info->b->bot)
-	{
-		if (idxa != info->a->bot)
-		{
-			elema = ft_itoa(idxa->data);
-			idxa = idxa->prev;
-		}
-		else
-			elema = " ";
-		if (idxb != info->b->bot)
-		{
-			elemb = ft_itoa(idxb->data);
-			idxb = idxb->prev;
-		}
-		else
-			elemb = " ";
-		printf("%s %s\n", elema, elemb);
-	}
-	printf("a size : %d b size : %d\n", info->a->size, info->b->size);
 }
