@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:54:38 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/05 13:51:30 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:50:41 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "push_swap.h"
 #include "./libft/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 
 int	pop(t_stack *stack)
 {
