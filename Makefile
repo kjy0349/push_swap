@@ -6,7 +6,7 @@
 #    By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/09 11:06:24 by jeykim            #+#    #+#              #
-#    Updated: 2022/11/05 20:52:23 by jeykim           ###   ########.fr        #
+#    Updated: 2022/11/05 21:40:41 by jeykim           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,17 +26,20 @@ INCS	= .
 	${CC} ${CFLAGS} -c $< -o ${<:.c=.o} -I${INCS}
 
 ${NAME} : ${OBJECT}
+	make -C ./libft all
 	${CC} ${CFLAGS} ${OBJECT} -L./libft -lft -o ${NAME}
 
 all : ${NAME}
 
 clean :
 	rm -f ${OBJECT} ${OBJECT_BONUS}
+	make -C ./libft fclean
 
 fclean : clean
 	rm -f ${NAME} ${BONUS}
 
 bonus :
+	make -C ./libft all
 	make ${BONUS}
 
 ${BONUS} : ${OBJECT_BONUS}
