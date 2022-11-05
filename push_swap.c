@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:52:10 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 20:07:32 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:40:41 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,12 +76,12 @@ void	check_dup(t_info *info, int arr_size)
 		j = i + 1;
 		while (j < arr_size)
 		{
-			if (i == j)
+			if (array[i] == array[j])
 			{
 				free_stack(info->a);
 				free_stack(info->b);
 				free(info->array);
-				print_error(-1);
+				print_error(1);
 			}
 			j++;
 		}

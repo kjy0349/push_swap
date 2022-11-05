@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 17:39:27 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:44:40 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:11:24 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,6 @@ void	check_sort(int *array, int size, int idx)
 			}
 				j++;
 		}
-		if (array[idx] == array[idx + 1])
-			print_error(1);
 		idx++;
 	}
 	if (checker == 0)
@@ -49,13 +47,7 @@ void	sort_all(t_info *info)
 	set_pivot_divide(info);
 	while (info->a->size > 3)
 		pb(info);
-	if (info->a->size == 2)
-	{
-		if (info->a->top->prev->data > info->a->bot->next->data)
-			sa(info);
-	}
-	else if (info->a->size == 3)
-		sort_triple(info);
+	sort_triple(info);
 	while (info->b->size > 0)
 	{
 		a = 0;

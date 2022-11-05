@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/04 18:54:00 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:17:24 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:33:14 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	*make_array(int argc, char *argv[], int size)
 
 	ac_idx = 1;
 	arr_idx = 0;
-	array = (int *)malloc(sizeof(int) * (size + 1));
+	array = (int *)malloc(sizeof(int) * (size));
 	if (!array)
 		print_error(1);
 	while (ac_idx < argc)
@@ -31,7 +31,6 @@ int	*make_array(int argc, char *argv[], int size)
 		free_split(split_str);
 		ac_idx++;
 	}
-	array[arr_idx] = '\0';
 	return (array);
 }
 
@@ -55,7 +54,7 @@ void	set_str_array(int *array, int *arr_idx, char **str)
 	idx = 0;
 	while (str[idx])
 	{
-		tmp = ft_atoichk(str[idx]);
+		tmp = ft_atoichk(str[idx], 0);
 		array[*arr_idx] = tmp;
 		(*arr_idx)++;
 		idx++;

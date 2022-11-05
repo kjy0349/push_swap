@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:54:38 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:17:36 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 13:51:30 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ void	add(t_stack *stack, int elem)
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		print_error(1);
 	new->data = elem;
 	new->prev = stack->top->prev;
 	stack->top->prev->next = new;
@@ -76,6 +78,8 @@ void	addfirst(t_stack *stack, int elem)
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
+	if (!new)
+		print_error(1);
 	new->data = elem;
 	new->next = stack->bot->next;
 	stack->bot->next->prev = new;
@@ -87,7 +91,11 @@ void	addfirst(t_stack *stack, int elem)
 void	init_stack(t_stack *stack)
 {
 	stack->top = (t_node *)malloc(sizeof(t_node));
+	if (!stack->top)
+		print_error(1);
 	stack->bot = (t_node *)malloc(sizeof(t_node));
+	if (!stack->bot)
+		print_error(1);
 	stack->top->data = -1;
 	stack->bot->data = -1;
 	stack->top->next = NULL;

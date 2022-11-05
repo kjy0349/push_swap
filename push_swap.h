@@ -6,7 +6,7 @@
 /*   By: jeykim <jeykim@student.42seoul.kr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/07 10:55:03 by jeykim            #+#    #+#             */
-/*   Updated: 2022/11/04 19:44:08 by jeykim           ###   ########.fr       */
+/*   Updated: 2022/11/05 16:27:44 by jeykim           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int		is_full(t_stack *stack);
 void	free_stack(t_stack *stack);
 void	free_all(t_info *info);
 int		ft_isspace(char c);
-int		ft_atoichk(const char *str);
 int		split_size(char **parsed_str);
 int		print_error(int type);
 void	free_split(char **parsed_str);
 void	check_sort(int *array, int size, int idx);
+int		ft_atoichk(const char *str, int i);
 void	sort_all(t_info *info);
 void	sort_elem(t_info *info);
 void	last_sort(t_info *info);
